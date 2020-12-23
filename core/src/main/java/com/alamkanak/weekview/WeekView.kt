@@ -1233,13 +1233,21 @@ class WeekView @JvmOverloads constructor(
 
         gestureHandler.forceScrollFinished()
 
-        val isWaitingToBeLaidOut = ViewCompat.isLaidOut(this).not()
-        if (isWaitingToBeLaidOut) {
-            // If the view's dimensions have just changed or if it hasn't been laid out yet, we
-            // postpone the action until onDraw() is called the next time.
-            viewState.scrollToDate = adjustedDate
-            return
-        }
+        /**
+         * For some reason [isWaitingToBeLaidOut] get's true when using this view in a TabLayout with
+         * ViewPager2, resulting in returning from this method.
+         * Commenting out this block of code for now so that this method continues to get called even
+         * after [isWaitingToBeLaidOut] is true.
+         */
+
+
+//        val isWaitingToBeLaidOut = ViewCompat.isLaidOut(this).not()
+//        if (isWaitingToBeLaidOut) {
+//            // If the view's dimensions have just changed or if it hasn't been laid out yet, we
+//            // postpone the action until onDraw() is called the next time.
+//            viewState.scrollToDate = adjustedDate
+//            return
+//        }
 
         val destinationOffset = viewState.getXOriginForDate(date)
         val adjustedDestinationOffset = destinationOffset.coerceIn(
