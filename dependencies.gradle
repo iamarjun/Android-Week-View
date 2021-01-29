@@ -3,7 +3,7 @@
 ext {
     buildConfig = [
             minSdk      : 15,
-            minSdkJsr310: 26,
+            minSdkJsr310: 21,
             compileSdk  : 30,
             targetSdk   : 30,
     ]
@@ -21,6 +21,7 @@ ext {
             startup           : '1.0.0',
             threeTen          : '1.4.4',
             threeTenAbp       : '1.2.4',
+            javaDesugaring    : '1.0.9',
     ]
     libraries = [
             appCompat      : "androidx.appcompat:appcompat:${versions.appCompat}",
@@ -31,6 +32,7 @@ ext {
             startup        : "androidx.startup:startup-runtime:${versions.startup}",
             threeTen       : "org.threeten:threetenbp:${versions.threeTen}",
             threeTenAbp    : "com.jakewharton.threetenabp:threetenabp:${versions.threeTenAbp}",
+            javaDesugaring : "com.android.tools:desugar_jdk_libs:${versions.javaDesugaring}"
     ]
     testing = [
             androidxjUnit     : "androidx.test.ext:junit:${versions.androidxjUnit}",
